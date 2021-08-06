@@ -6,14 +6,19 @@ import DataEntry from "./DataEntry"
 import DataTable from "./DataTable"
 
 
-function App() {
-  return (
-    <div>
-      <div>JHirschfelder Expense Tracker</div>
-      <DataEntry />
-      <DataTable />
-    </div>
-  )
+class App extends React.Component {
+
+  render() {
+    
+    return (
+      <div>
+        <div>JHirschfelder Expense Tracker</div>
+        <DataEntry />
+        <DataTable />
+      </div>
+    )
+
+  }
 }
 
 export default App;

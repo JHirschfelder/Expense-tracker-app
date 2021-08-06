@@ -1,14 +1,19 @@
 import React from "react"
 
-function ExpenseLine(props) {
-  return (
-    <div>
-        <p>{props.name}</p>
-        <p>{props.date}</p>
-        <p>{props.type}</p>
-        <p>${props.amount}</p>
-    </div>
-  )
+class ExpenseLine extends React.Component {
+
+  render() {
+
+    return (
+      <div>
+          <p>{this.props.name}</p>
+          <p>{this.props.date}</p>
+          <p>{this.props.type}</p>
+          <p>${this.props.amount}</p>
+      </div>
+    )
+  }
 }
+
 
 export default ExpenseLine
