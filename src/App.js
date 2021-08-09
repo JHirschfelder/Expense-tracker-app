@@ -4,6 +4,7 @@ import './App.css'
 //import Header from "./Header"
 import DataEntry from "./DataEntry"
 import DataTable from "./DataTable"
+import CreateNewItem from "./CreateNewItem"
 
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
       <div>
         <div>JHirschfelder Expense Tracker</div>
         <DataEntry />
+        <CreateNewItem />
         <DataTable />
       </div>
     )

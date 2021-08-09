@@ -30,13 +30,4 @@ class DataEntry extends React.Component {
   }
 }
 
-/*function CreateNewItem() {
-  return (
-    <div>
-      
-    </div>
-  )
-}*/
-
-//export default CreateNewItem
 export default DataEntry
