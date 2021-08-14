@@ -1,7 +1,6 @@
 import React from 'react'
 
 import './App.css'
-//import Header from "./Header"
 import DataEntry from "./DataEntry"
 import DataTable from "./DataTable"
 import CreateNewItem from "./CreateNewItem"

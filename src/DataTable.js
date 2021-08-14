@@ -2,6 +2,7 @@ import React from "react"
 
 import ExpenseLine from "./ExpenseLine"
 
+
 class DataTable extends React.Component {
 
   render() {

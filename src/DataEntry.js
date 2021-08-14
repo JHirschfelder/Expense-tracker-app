@@ -1,16 +1,21 @@
 import React from 'react'
+//import CreateNewItem from './CreateNewItem'
+//import DataTable from './DataTable'
 
 
 class DataEntry extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
+      idcounter: 1,
       expensename: "",
       date: "",
       expensetype: "",
-      amount: ""
+      amount: "",
     }
+
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
@@ -19,10 +24,15 @@ class DataEntry extends React.Component {
     })
   }
 
+  handleSubmit() {
+    const NewLineItem = [this.state.expensename, this.state.date, this.state.expensetype, this.state.amount]
+    console.log(NewLineItem)
+  }
+
   render() {
     
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <span>Expense name:</span>
           <input 
             type="text" 
@@ -46,11 +56,11 @@ class DataEntry extends React.Component {
             name="expensetype"
             onChange={this.handleChange}
           >
-              <option value="debit">Debit</option>
-              <option value="credit">Credit</option>
-              <option value="cash">Cash</option>
-              <option value="crypto">Crypto</option>
-              <option value="other">Other</option>
+              <option value="Debit">Debit</option>
+              <option value="Credit">Credit</option>
+              <option value="Cash">Cash</option>
+              <option value="Crypto">Crypto</option>
+              <option value="Other">Other</option>
           </select>
   
         <span>Amount:</span>
@@ -61,7 +71,8 @@ class DataEntry extends React.Component {
             placeholder="0.00"
             onChange={this.handleChange}
           />
-          <h1>{this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
+          <h1>{this.state.idcounter} {this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
+          <button>Enter</button>
       </form>
     )
 
