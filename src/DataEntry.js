@@ -1,7 +1,7 @@
 import React from 'react'
 //import CreateNewItem from './CreateNewItem'
 //import DataTable from './DataTable'
-
+ 
 
 class DataEntry extends React.Component {
   constructor(props) {
