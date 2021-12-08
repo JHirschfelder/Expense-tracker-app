@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DataEntry from "./DataEntry"
-//import DataTable from "./DataTable"
-//import CreateNewItem from "./CreateNewItem"
 
 class App extends React.Component {
 
