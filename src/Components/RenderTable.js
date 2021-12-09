@@ -16,7 +16,19 @@ class RenderTable extends React.Component {
 
     return (
       <div>
-        {ExpenseComponents}
+        <table>
+          <thead>
+            <tr>
+                <th>Item</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ExpenseComponents}
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -26,12 +38,12 @@ class RenderTable extends React.Component {
 class ExpenseLine extends React.Component {
   render() {
     return (
-      <div>
-          <p>{this.props.name}</p>
-          <p>{this.props.date}</p>
-          <p>{this.props.type}</p>
-          <p>${this.props.amount}</p>
-      </div>
+      <tr>
+          <td>{this.props.name}</td>
+          <td>{this.props.date}</td>
+          <td>{this.props.type}</td>
+          <td>${this.props.amount}</td>
+      </tr>
     )
   }
 }
