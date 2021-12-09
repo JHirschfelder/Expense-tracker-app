@@ -15,8 +15,7 @@ class RenderTable extends React.Component {
     
 
     return (
-      <div>
-        <table>
+        <table className="table">
           <thead>
             <tr>
                 <th>Item</th>
@@ -29,7 +28,6 @@ class RenderTable extends React.Component {
             {ExpenseComponents}
           </tbody>
         </table>
-      </div>
     )
   }
   

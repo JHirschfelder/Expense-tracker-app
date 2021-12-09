@@ -37,28 +37,31 @@ class DataEntry extends React.Component {
     
     return (
       <form onSubmit={this.handleSubmit}>
-        <span>Expense name:</span>
+        <label>Expense name:</label>
           <input 
             type="text" 
             value={this.state.expensename} 
             name="expensename" 
             placeholder="Enter reference name"
             onChange={this.handleChange}
+            className="form-control"
           />
   
-        <span>Date:</span>
+        <label>Date:</label>
           <input 
             type="date" 
             value={this.state.date} 
             name="date"
             onChange={this.handleChange}
+            className="form-control"
           />
   
-        <span>Expense type:</span>
+        <label>Expense type:</label>
           <select 
             value={this.state.expensetype}
             name="expensetype"
             onChange={this.handleChange}
+            className="form-control"
           >
               <option value="Debit">Debit</option>
               <option value="Credit">Credit</option>
@@ -67,13 +70,14 @@ class DataEntry extends React.Component {
               <option value="Other">Other</option>
           </select>
   
-        <span>Amount:</span>
+        <label>Amount:</label>
           <input 
             type="number" 
             value={this.state.amount} 
             name="amount" 
             placeholder="0.00"
             onChange={this.handleChange}
+            className="form-control"
           />
           <h1>{this.state.idcounter} {this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
           <button type="submit" className="btn-primary">Enter</button>
