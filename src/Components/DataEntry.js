@@ -1,4 +1,13 @@
 import React from 'react'
+
+import RenderTable from "./RenderTable"
+
+/*
+expense array in state
+make it an object
+pass to array of expenses
+pass array to render table
+*/
  
 class DataEntry extends React.Component {
   constructor(props) {
@@ -36,6 +45,7 @@ class DataEntry extends React.Component {
   render() {
     
     return (
+      <>
       <form onSubmit={this.handleSubmit}>
         <label>Expense name:</label>
           <input 
@@ -45,7 +55,7 @@ class DataEntry extends React.Component {
             placeholder="Enter reference name"
             onChange={this.handleChange}
             className="form-control"
-          />
+            />
   
         <label>Date:</label>
           <input 
@@ -82,7 +92,13 @@ class DataEntry extends React.Component {
           <h1>{this.state.idcounter} {this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
           <button type="submit" className="btn-primary">Enter</button>
 
+          
+
       </form>
+
+      <h2>Recent Expenses</h2>
+      <RenderTable expenses={this.state}/>
+            </>
     )
 
   }
