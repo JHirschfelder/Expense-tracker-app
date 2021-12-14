@@ -1,23 +1,25 @@
 import React from 'react'
-
 import RenderTable from "./RenderTable"
 
 /*
-expense array in state
-make it an object
 pass to array of expenses
 pass array to render table
 */
- 
+
+let idValue=Math.random()
+
+
 class DataEntry extends React.Component {
   constructor(props) {
     super(props)
       this.state = {
-        idcounter: 1,
-        expensename: "",
-        date: "",
-        expensetype: "",
-        amount: "",
+        input: {
+          idcounter: idValue,
+          expensename: "",
+          date: "",
+          expensetype: "",
+          amount: "",
+        }
       }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,9 +33,11 @@ class DataEntry extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const NewLineItem = [this.state.idcounter, this.state.expensename, this.state.date, this.state.expensetype, this.state.amount]
+    const NewLineItem = [this.state.input.idcounter, this.state.input.expensename, this.state.input.date, this.state.input.expensetype, this.state.input.amount]
+
     if (NewLineItem.some(this.checkForBlanks)!== false) {
       alert ("Please complete all value fields")
+
     }
     console.log(NewLineItem)
   }
@@ -41,6 +45,7 @@ class DataEntry extends React.Component {
   checkForBlanks (item) {
     return item === ""
   }
+
 
   render() {
     
@@ -89,7 +94,7 @@ class DataEntry extends React.Component {
             onChange={this.handleChange}
             className="form-control"
           />
-          <h1>{this.state.idcounter} {this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
+          <h1>{this.state.input.idcounter} {this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
           <button type="submit" className="btn-primary">Enter</button>
 
           
@@ -97,8 +102,8 @@ class DataEntry extends React.Component {
       </form>
 
       <h2>Recent Expenses</h2>
-      <RenderTable expenses={this.state}/>
-            </>
+      <RenderTable expense={this.state}/>
+    </>
     )
 
   }
