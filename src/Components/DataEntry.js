@@ -3,7 +3,7 @@ import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
 
 /*
-pass to array of expenses
+add to expenses array instead of replacing
 pass array to render table
 */
 
@@ -32,11 +32,6 @@ class DataEntry extends React.Component {
         }
       }
     }))
-    
-    
-    /*({
-      [event.target.name]: event.target.value
-    })*/
   }
 
   handleSubmit = event => {
@@ -51,11 +46,23 @@ class DataEntry extends React.Component {
     expenseArray.push(NewLineItem)
 
     console.log(expenseArray)
+    
+    this.clearFields ()
   }
   
   checkForBlanks (item) {
     return item === ""
   }
+
+  clearFields () {
+      this.setState({ input: {
+          idcounter: Math.random(),
+          expensename: "",
+          date: "",
+          expensetype: "",
+          amount: "",
+        } })
+   }
 
 
   render() {
