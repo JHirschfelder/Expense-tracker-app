@@ -23,6 +23,7 @@ class RenderTable extends React.Component {
                 <th>Date</th>
                 <th>Type</th>
                 <th>Amount</th>
+                <th>Delete</th>
             </tr>
           </thead>
           <tbody>

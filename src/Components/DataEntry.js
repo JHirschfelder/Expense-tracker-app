@@ -1,12 +1,11 @@
 import React from 'react'
 import RenderTable from "./RenderTable"
+import update from 'react-addons-update';
 
 /*
 pass to array of expenses
 pass array to render table
 */
-
-let idValue=Math.random()
 
 
 class DataEntry extends React.Component {
@@ -14,7 +13,7 @@ class DataEntry extends React.Component {
     super(props)
       this.state = {
         input: {
-          idcounter: idValue,
+          idcounter: Math.random(),
           expensename: "",
           date: "",
           expensetype: "",
@@ -26,20 +25,32 @@ class DataEntry extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
+    this.setState(update(this.state, {
+      input: {
+        [event.target.name]: {
+          $set: event.target.value
+        }
+      }
+    }))
+    
+    
+    /*({
       [event.target.name]: event.target.value
-    })
+    })*/
   }
 
   handleSubmit = event => {
     event.preventDefault()
-    const NewLineItem = [this.state.input.idcounter, this.state.input.expensename, this.state.input.date, this.state.input.expensetype, this.state.input.amount]
+    const NewLineItem = [this.state.input]
+    let expenseArray = []
 
     if (NewLineItem.some(this.checkForBlanks)!== false) {
       alert ("Please complete all value fields")
-
     }
-    console.log(NewLineItem)
+
+    expenseArray.push(NewLineItem)
+
+    console.log(expenseArray)
   }
   
   checkForBlanks (item) {
@@ -55,7 +66,7 @@ class DataEntry extends React.Component {
         <label>Expense name:</label>
           <input 
             type="text" 
-            value={this.state.expensename} 
+            value={this.state.input.expensename} 
             name="expensename" 
             placeholder="Enter reference name"
             onChange={this.handleChange}
@@ -65,7 +76,7 @@ class DataEntry extends React.Component {
         <label>Date:</label>
           <input 
             type="date" 
-            value={this.state.date} 
+            value={this.state.input.date} 
             name="date"
             onChange={this.handleChange}
             className="form-control"
@@ -73,7 +84,7 @@ class DataEntry extends React.Component {
   
         <label>Expense type:</label>
           <select 
-            value={this.state.expensetype}
+            value={this.state.input.expensetype}
             name="expensetype"
             onChange={this.handleChange}
             className="form-control"
@@ -88,13 +99,13 @@ class DataEntry extends React.Component {
         <label>Amount:</label>
           <input 
             type="number" 
-            value={this.state.amount} 
+            value={this.state.input.amount} 
             name="amount" 
             placeholder="0.00"
             onChange={this.handleChange}
             className="form-control"
           />
-          <h1>{this.state.input.idcounter} {this.state.expensename} {this.state.date} {this.state.expensetype} {this.state.amount}</h1>
+          <h1>{this.state.input.idcounter} {this.state.input.expensename} {this.state.input.date} {this.state.input.expensetype} {this.state.input.amount}</h1>
           <button type="submit" className="btn-primary">Enter</button>
 
           
@@ -103,6 +114,7 @@ class DataEntry extends React.Component {
 
       <h2>Recent Expenses</h2>
       <RenderTable expense={this.state}/>
+
     </>
     )
 
