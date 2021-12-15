@@ -3,10 +3,10 @@ import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
 
 /*
-add to expenses array instead of replacing
 pass array to render table
 */
 
+let expenseArray = []
 
 class DataEntry extends React.Component {
   constructor(props) {
@@ -37,8 +37,7 @@ class DataEntry extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     const NewLineItem = [this.state.input]
-    let expenseArray = []
-
+    
     if (NewLineItem.some(this.checkForBlanks)!== false) {
       alert ("Please complete all value fields")
     }
@@ -120,7 +119,7 @@ class DataEntry extends React.Component {
       </form>
 
       <h2>Recent Expenses</h2>
-      <RenderTable expense={this.state}/>
+      <RenderTable expenses={expenseArray}/>
 
     </>
     )
