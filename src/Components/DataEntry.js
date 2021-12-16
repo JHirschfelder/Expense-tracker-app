@@ -3,26 +3,36 @@ import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
 
 /*
-pass array to render table
+Task list:
+  get to update the expenseArray
+  conditional render for if array is blank
+  pass array to render table
+  add delete button to each line
+  implement saving
+  styling
 */
 
-let expenseArray = []
 
 class DataEntry extends React.Component {
+
   constructor(props) {
     super(props)
       this.state = {
         input: {
           idcounter: Math.random(),
-          expensename: "",
+          name: "",
           date: "",
-          expensetype: "",
+          type: "",
           amount: "",
-        }
+        },
+
+        expenseArray: []
       }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  
 
   handleChange(event) {
     this.setState(update(this.state, {
@@ -42,9 +52,10 @@ class DataEntry extends React.Component {
       alert ("Please complete all value fields")
     }
 
-    expenseArray.push(NewLineItem)
-
-    console.log(expenseArray)
+    this.setState((prevState) => {
+      return { expenseArray: [...prevState.expenseArray, this.state.input]
+      }
+    })
     
     this.clearFields ()
   }
@@ -72,8 +83,8 @@ class DataEntry extends React.Component {
         <label>Expense name:</label>
           <input 
             type="text" 
-            value={this.state.input.expensename} 
-            name="expensename" 
+            value={this.state.input.name} 
+            name="name" 
             placeholder="Enter reference name"
             onChange={this.handleChange}
             className="form-control"
@@ -90,8 +101,8 @@ class DataEntry extends React.Component {
   
         <label>Expense type:</label>
           <select 
-            value={this.state.input.expensetype}
-            name="expensetype"
+            value={this.state.input.type}
+            name="type"
             onChange={this.handleChange}
             className="form-control"
           >
@@ -119,7 +130,8 @@ class DataEntry extends React.Component {
       </form>
 
       <h2>Recent Expenses</h2>
-      <RenderTable expenses={expenseArray}/>
+
+      <RenderTable expense={this.state.expenseArray}/>
 
     </>
     )
