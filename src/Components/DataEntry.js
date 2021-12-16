@@ -4,9 +4,6 @@ import update from 'react-addons-update';
 
 /*
 Task list:
-  get to update the expenseArray
-  conditional render for if array is blank
-  pass array to render table
   add delete button to each line
   implement saving
   styling
@@ -19,10 +16,10 @@ class DataEntry extends React.Component {
     super(props)
       this.state = {
         input: {
-          idcounter: Math.random(),
+          id: Math.random(),
           name: "",
           date: "",
-          type: "",
+          type: "Debit",
           amount: "",
         },
 
@@ -66,10 +63,10 @@ class DataEntry extends React.Component {
 
   clearFields () {
       this.setState({ input: {
-          idcounter: Math.random(),
-          expensename: "",
+          id: Math.random(),
+          name: "",
           date: "",
-          expensetype: "",
+          type: "Debit",
           amount: "",
         } })
    }
@@ -122,7 +119,7 @@ class DataEntry extends React.Component {
             onChange={this.handleChange}
             className="form-control"
           />
-          <h1>{this.state.input.idcounter} {this.state.input.expensename} {this.state.input.date} {this.state.input.expensetype} {this.state.input.amount}</h1>
+          <br/>
           <button type="submit" className="btn-primary">Enter</button>
 
           
