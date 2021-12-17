@@ -1,6 +1,7 @@
 import React from 'react'
 import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
+import { Alert } from 'bootstrap';
 
 /*
 Task list:
@@ -50,7 +51,7 @@ class DataEntry extends React.Component {
     }
 
     this.setState((prevState) => {
-      return { expenseArray: [...prevState.expenseArray, this.state.input]
+      return { expenseArray: [this.state.input, ...prevState.expenseArray]
       }
     })
     
@@ -68,8 +69,14 @@ class DataEntry extends React.Component {
           date: "",
           type: "Debit",
           amount: "",
+          delete: <button>X</button>,
         } })
    }
+
+   handleDelete = expenseId => {
+    const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
+    this.setState({ expenseArray: expenses });
+  };
 
 
   render() {
@@ -128,7 +135,10 @@ class DataEntry extends React.Component {
 
       <h2>Recent Expenses</h2>
 
-      <RenderTable expense={this.state.expenseArray}/>
+      <RenderTable 
+        expense={this.state.expenseArray}
+        handleDelete={this.handleDelete}
+      />
 
     </>
     )
