@@ -1,11 +1,9 @@
 import React from 'react'
 import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
-import { Alert } from 'bootstrap';
 
 /*
 Task list:
-  fix field validation
   implement saving
   styling
 */
@@ -20,7 +18,7 @@ class DataEntry extends React.Component {
           id: Math.random(),
           name: "",
           date: "",
-          type: "Debit",
+          type: "",
           amount: "",
         },
 
@@ -44,11 +42,6 @@ class DataEntry extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const NewLineItem = [this.state.input]
-    
-    if (NewLineItem.some(this.checkForBlanks)!== false) {
-      Alert ("Please complete all value fields")
-    }
 
     this.setState((prevState) => {
       return { expenseArray: [this.state.input, ...prevState.expenseArray]
@@ -57,19 +50,14 @@ class DataEntry extends React.Component {
     
     this.clearFields ()
   }
-  
-  checkForBlanks (item) {
-    return item === ""
-  }
 
   clearFields () {
       this.setState({ input: {
           id: Math.random(),
           name: "",
           date: "",
-          type: "Debit",
+          type: "",
           amount: "",
-          delete: <button>X</button>,
         } })
    }
 
@@ -92,6 +80,7 @@ class DataEntry extends React.Component {
             placeholder="Enter reference name"
             onChange={this.handleChange}
             className="form-control"
+            required
             />
   
         <label>Date:</label>
@@ -101,6 +90,7 @@ class DataEntry extends React.Component {
             name="date"
             onChange={this.handleChange}
             className="form-control"
+            required
           />
   
         <label>Expense type:</label>
@@ -109,7 +99,9 @@ class DataEntry extends React.Component {
             name="type"
             onChange={this.handleChange}
             className="form-control"
+            required
           >
+              <option value="">Select Expense type</option>
               <option value="Debit">Debit</option>
               <option value="Credit">Credit</option>
               <option value="Cash">Cash</option>
@@ -125,6 +117,7 @@ class DataEntry extends React.Component {
             placeholder="0.00"
             onChange={this.handleChange}
             className="form-control"
+            required
           />
           <br/>
           <button type="submit" className="btn-primary">Enter</button>
