@@ -36,7 +36,7 @@ class ExpenseLine extends React.Component {
           <td>{this.props.type}</td>
           <td>${this.props.amount}</td>
           <td><button
-              onClick={() => this.props.onDelete(this.props.expense.id)}
+              onClick={() => this.props.onDelete()}
             >X</button></td>
       </tr>
     )

@@ -73,9 +73,10 @@ class DataEntry extends React.Component {
         } })
    }
 
-   handleDelete = expenseId => {
-    const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
-    this.setState({ expenseArray: expenses });
+   handleDelete () {//= expenseId => {
+     console.log("hello")
+    //const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
+    //this.setState({ expenseArray: expenses });
   };
 
 
