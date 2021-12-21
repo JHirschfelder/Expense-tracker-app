@@ -3,9 +3,11 @@ import React from 'react'
 class RenderTable extends React.Component {
 
   render() {
-  
+
+    //let lineID=this.props.expense.id
+
     const ExpenseComponents = this.props.expense.map(expense => 
-      <ExpenseLine key={expense.id} name={expense.name} date={expense.date} type={expense.type} amount={expense.amount} onDelete={this.props.handleDelete}/>)
+      <ExpenseLine key={expense.id} lineID={expense.id} name={expense.name} date={expense.date} type={expense.type} amount={expense.amount} onDelete={this.props.handleDelete}/>)
     
     return (
         <table className="table">
@@ -36,7 +38,7 @@ class ExpenseLine extends React.Component {
           <td>{this.props.type}</td>
           <td>${this.props.amount}</td>
           <td><button
-              onClick={() => this.props.onDelete()}
+              onClick={() => this.props.onDelete(this.props.lineID)}
             >X</button></td>
       </tr>
     )

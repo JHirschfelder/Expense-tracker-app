@@ -5,7 +5,7 @@ import { Alert } from 'bootstrap';
 
 /*
 Task list:
-  add delete button to each line
+  fix field validation
   implement saving
   styling
 */
@@ -47,7 +47,7 @@ class DataEntry extends React.Component {
     const NewLineItem = [this.state.input]
     
     if (NewLineItem.some(this.checkForBlanks)!== false) {
-      alert ("Please complete all value fields")
+      Alert ("Please complete all value fields")
     }
 
     this.setState((prevState) => {
@@ -73,10 +73,9 @@ class DataEntry extends React.Component {
         } })
    }
 
-   handleDelete () {//= expenseId => {
-     console.log("hello")
-    //const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
-    //this.setState({ expenseArray: expenses });
+   handleDelete = expenseId => {
+    const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
+    this.setState({ expenseArray: expenses });
   };
 
 
