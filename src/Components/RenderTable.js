@@ -4,8 +4,6 @@ class RenderTable extends React.Component {
 
   render() {
 
-    //let lineID=this.props.expense.id
-
     const ExpenseComponents = this.props.expense.map(expense => 
       <ExpenseLine key={expense.id} lineID={expense.id} name={expense.name} date={expense.date} type={expense.type} amount={expense.amount} onDelete={this.props.handleDelete}/>)
     

@@ -4,7 +4,6 @@ import update from 'react-addons-update';
 
 /*
 Task list:
-  implement saving
   styling
 */
 
@@ -22,14 +21,12 @@ class DataEntry extends React.Component {
           amount: "",
         },
 
-        expenseArray: []
+        expenseArray: JSON.parse(localStorage.getItem("my_expenses")) || []
       }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
   
-
   handleChange(event) {
     this.setState(update(this.state, {
       input: {
@@ -48,6 +45,9 @@ class DataEntry extends React.Component {
       }
     })
     
+    localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
+    console.log(localStorage.getItem("my_expenses"))
+
     this.clearFields ()
   }
 
@@ -68,6 +68,8 @@ class DataEntry extends React.Component {
 
 
   render() {
+
+    localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
     
     return (
       <>
@@ -138,6 +140,5 @@ class DataEntry extends React.Component {
 
   }
 }
-
 
 export default DataEntry
