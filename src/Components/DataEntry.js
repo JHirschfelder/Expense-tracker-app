@@ -74,55 +74,76 @@ class DataEntry extends React.Component {
     return (
       <>
       <form onSubmit={this.handleSubmit}>
-        <label>Expense name:</label>
-          <input 
-            type="text" 
-            value={this.state.input.name} 
-            name="name" 
-            placeholder="Enter reference name"
-            onChange={this.handleChange}
-            className="form-control"
-            required
-            />
-  
-        <label>Date:</label>
-          <input 
-            type="date" 
-            value={this.state.input.date} 
-            name="date"
-            onChange={this.handleChange}
-            className="form-control"
-            required
-          />
-  
-        <label>Expense type:</label>
-          <select 
-            value={this.state.input.type}
-            name="type"
-            onChange={this.handleChange}
-            className="form-control"
-            required
-          >
-              <option value="">Select Expense type</option>
-              <option value="Debit">Debit</option>
-              <option value="Credit">Credit</option>
-              <option value="Cash">Cash</option>
-              <option value="Crypto">Crypto</option>
-              <option value="Other">Other</option>
-          </select>
-  
-        <label>Amount:</label>
-          <input 
-            type="number" 
-            value={this.state.input.amount} 
-            name="amount" 
-            placeholder="0.00"
-            onChange={this.handleChange}
-            className="form-control"
-            required
-          />
-          <br/>
-          <button type="submit" className="btn-primary">Enter</button>
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Expense name:</label>
+            <div className="col-sm-9">
+                <input 
+                  type="text" 
+                  value={this.state.input.name} 
+                  name="name" 
+                  placeholder="Enter reference name"
+                  onChange={this.handleChange}
+                  className="form-control"
+                  required
+                  />
+            </div>
+        </div>
+                
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Date:</label>
+            <div className="col-sm-9">
+              <input 
+                type="date" 
+                value={this.state.input.date} 
+                name="date"
+                onChange={this.handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+        </div>
+
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Expense type:</label>
+            <div className="col-sm-9">
+              <select 
+                value={this.state.input.type}
+                name="type"
+                onChange={this.handleChange}
+                className="form-control"
+                required
+              >
+                  <option value="">Select Expense type</option>
+                  <option value="Debit">Debit</option>
+                  <option value="Credit">Credit</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Crypto">Crypto</option>
+                  <option value="Other">Other</option>
+              </select>
+            </div>
+        </div>
+
+        <div className="form-group row">
+          <label className="col-sm-3 col-form-label">Amount:</label>
+            <div className="col-sm-9">
+              <input 
+                type="number" 
+                value={this.state.input.amount} 
+                name="amount" 
+                placeholder="0.00"
+                onChange={this.handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-9 offset-sm-3">
+            <button type="submit" className="btn-primary">Enter</button>
+          </div>
+        </div>
 
           
 

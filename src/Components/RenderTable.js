@@ -8,7 +8,7 @@ class RenderTable extends React.Component {
       <ExpenseLine key={expense.id} lineID={expense.id} name={expense.name} date={expense.date} type={expense.type} amount={expense.amount} onDelete={this.props.handleDelete}/>)
     
     return (
-        <table className="table">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
                 <th>Item</th>
