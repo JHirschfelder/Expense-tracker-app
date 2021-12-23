@@ -2,12 +2,6 @@ import React from 'react'
 import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
 
-/*
-Task list:
-  styling
-*/
-
-
 class DataEntry extends React.Component {
 
   constructor(props) {
