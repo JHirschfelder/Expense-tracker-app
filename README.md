@@ -2,17 +2,9 @@
 
 An expense tracker build with React js and Bootstrap. 
   
-View it [here]()
+View it [here](https://jhirschfelder-expensetracker.herokuapp.com/)
 
 ![](ExpenseTrackerScreenshot.png)
 
-Project Explanation Here
+This was my first app built with React js and bootstrap. It takes user input and saves to state, then passing that data as a prop to a render function. This project provided a fun challenge and learning experience for exploring React. 
 
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
