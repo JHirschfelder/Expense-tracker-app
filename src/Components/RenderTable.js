@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
 
 class RenderTable extends React.Component {
 
@@ -31,13 +32,15 @@ class ExpenseLine extends React.Component {
   render() {
     return (
       <tr>
-          <td>{this.props.name}</td>
+          <td style={{flexWrap: 'wrap'}}>{this.props.name}</td>
           <td>{this.props.date}</td>
           <td>{this.props.type}</td>
           <td>${this.props.amount}</td>
-          <td><button
+          <td><Button
+              variant="outline-danger"
+              size="sm"
               onClick={() => this.props.onDelete(this.props.lineID)}
-            >X</button></td>
+            >X</Button></td>
       </tr>
     )
   }

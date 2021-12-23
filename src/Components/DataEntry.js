@@ -70,13 +70,13 @@ class DataEntry extends React.Component {
   render() {
 
     localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
-    
+
     return (
       <>
       <form onSubmit={this.handleSubmit}>
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Expense name:</label>
-            <div className="col-sm-9">
+        <div className="form-group row text-end justify-content-center" >
+          <label className="col-sm-2 col-form-label" style={{color: "#6CB4EE"}}>Expense name:</label>
+            <div className="col-sm-6">
                 <input 
                   type="text" 
                   value={this.state.input.name} 
@@ -89,9 +89,9 @@ class DataEntry extends React.Component {
             </div>
         </div>
                 
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Date:</label>
-            <div className="col-sm-9">
+        <div className="form-group row text-end justify-content-center">
+          <label className="col-sm-2 col-form-label" style={{color: "#6CB4EE"}}>Date:</label>
+            <div className="col-sm-6">
               <input 
                 type="date" 
                 value={this.state.input.date} 
@@ -103,9 +103,9 @@ class DataEntry extends React.Component {
             </div>
         </div>
 
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Expense type:</label>
-            <div className="col-sm-9">
+        <div className="form-group row text-end justify-content-center">
+          <label className="col-sm-2 col-form-label" style={{color: "#6CB4EE"}}>Expense type:</label>
+            <div className="col-sm-6">
               <select 
                 value={this.state.input.type}
                 name="type"
@@ -123,9 +123,9 @@ class DataEntry extends React.Component {
             </div>
         </div>
 
-        <div className="form-group row">
-          <label className="col-sm-3 col-form-label">Amount:</label>
-            <div className="col-sm-9">
+        <div className="form-group row text-end justify-content-center">
+          <label className="col-sm-2 col-form-label" style={{color: "#6CB4EE"}}>Amount:</label>
+            <div className="col-sm-6">
               <input 
                 type="number" 
                 value={this.state.input.amount} 
@@ -139,8 +139,8 @@ class DataEntry extends React.Component {
         </div>
         <br/>
 
-        <div class="row">
-          <div class="col-sm-9 offset-sm-3">
+        <div class="row justify-content-center">
+          <div class="col-sm-6 offset-sm-2">
             <button type="submit" className="btn-primary">Enter</button>
           </div>
         </div>
@@ -149,7 +149,9 @@ class DataEntry extends React.Component {
 
       </form>
 
+      <br/>
       <h2>Recent Expenses</h2>
+      <br/>
 
       <RenderTable 
         expense={this.state.expenseArray}
