@@ -13,7 +13,6 @@ class DataEntry extends React.Component {
           type: "",
           amount: "",
         },
-
         expenseArray: JSON.parse(localStorage.getItem("my_expenses")) || []
       }
     this.handleChange = this.handleChange.bind(this)
@@ -33,10 +32,8 @@ class DataEntry extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const expense = {
-      id: Math.random(), 
-      ...this.state.input
-    }
+    const expense = {id: Math.random(), ...this.state.input}
+
     this.props.createExpense(expense)
 
     this.clearFields ()
@@ -108,7 +105,6 @@ class DataEntry extends React.Component {
 
 
     return (
-      <>
       <form onSubmit={this.handleSubmit}>
 
         <InputItemFormat labelName = {"Expense name"} formItem = {nameInput}/>
@@ -121,20 +117,14 @@ class DataEntry extends React.Component {
 
         <br/>
 
-        <div class="row justify-content-center">
-          <div class="col-sm-6 offset-sm-2">
+        <div className="row justify-content-center">
+          <div className="col-sm-6 offset-sm-2">
             <button type="submit" className="btn-primary">Enter</button>
           </div>
         </div>
 
-          
-
       </form>
-
-
-    </>
     )
-
   }
 }
 

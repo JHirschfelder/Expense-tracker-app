@@ -55,7 +55,6 @@ class App extends React.Component {
     }
   
     return (
-      <>
         <div style={backgroundImage}>
           <div 
           className="container"
@@ -64,20 +63,16 @@ class App extends React.Component {
             <br/>
             <h1 className="text-center" style={{color:"#6CB4EE"}}>JHirschfelder Expense Tracker</h1>
             <br/>
+
             <DataEntry createExpense={this.createExpense}/>
 
-            
             <br/>
-            <h2>Recent Expenses</h2>
+            <h3 className="text-center" style={{color:"#6CB4EE"}}>Recent Expenses</h3>
             <br/>
 
-            <RenderTable 
-              expense={this.state.expenseArray}
-              handleDelete={this.handleDelete}
-            />
+            <RenderTable expense={this.state.expenseArray} handleDelete={this.handleDelete}/>
           </div>
         </div>
-      </>
     )
 
   }
