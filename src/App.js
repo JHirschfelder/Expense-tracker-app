@@ -12,6 +12,17 @@ class App extends React.Component {
       }
   }
 
+  componentDidMount() {
+    const savedExpenses = JSON.parse(localStorage.getItem('my_expenses')) || []
+    this.setState({ expenseArray: savedExpenses })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.expenseArray.length !== this.state.expenseArray.length) {
+      localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
+    }
+  }
+
   handleDelete = expenseId => {
     const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
     this.setState({ expenseArray: expenses });
@@ -24,6 +35,7 @@ class App extends React.Component {
       }
     })
   }
+
 
   render() {
     const backgroundImage = {
