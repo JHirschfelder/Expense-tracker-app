@@ -1,8 +1,29 @@
 import React from 'react';
 import DataEntry from "./Components/DataEntry"
+import RenderTable from "./Components/RenderTable"
 import background from "./images/background.jpg"
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+      this.state= {
+        expenseArray: []
+      }
+  }
+
+  handleDelete = expenseId => {
+    const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
+    this.setState({ expenseArray: expenses });
+  };
+
+  createExpense = expense => {
+    this.setState ((prevState) => {
+      return {
+        expenseArray: [expense, ...prevState.expenseArray]
+      }
+    })
+  }
 
   render() {
     const backgroundImage = {
@@ -31,7 +52,17 @@ class App extends React.Component {
             <br/>
             <h1 className="text-center" style={{color:"#6CB4EE"}}>JHirschfelder Expense Tracker</h1>
             <br/>
-            <DataEntry />
+            <DataEntry createExpense={this.createExpense}/>
+
+            
+            <br/>
+            <h2>Recent Expenses</h2>
+            <br/>
+
+            <RenderTable 
+              expense={this.state.expenseArray}
+              handleDelete={this.handleDelete}
+            />
           </div>
         </div>
       </>

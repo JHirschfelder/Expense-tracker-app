@@ -1,5 +1,4 @@
 import React from 'react'
-import RenderTable from "./RenderTable"
 import update from 'react-addons-update';
 
 class DataEntry extends React.Component {
@@ -34,13 +33,9 @@ class DataEntry extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    this.setState((prevState) => {
-      return { expenseArray: [this.state.input, ...prevState.expenseArray]
-      }
-    })
+    this.props.createExpense(this.state.input)
     
-    localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
-    console.log(localStorage.getItem("my_expenses"))
+    //localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
 
     this.clearFields ()
   }
@@ -55,15 +50,9 @@ class DataEntry extends React.Component {
         } })
    }
 
-   handleDelete = expenseId => {
-    const expenses = this.state.expenseArray.filter(expense => expense.id !== expenseId);
-    this.setState({ expenseArray: expenses });
-  };
-
-
   render() {
 
-    localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
+    //localStorage.setItem("my_expenses", JSON.stringify(this.state.expenseArray))
 
     return (
       <>
@@ -143,14 +132,6 @@ class DataEntry extends React.Component {
 
       </form>
 
-      <br/>
-      <h2>Recent Expenses</h2>
-      <br/>
-
-      <RenderTable 
-        expense={this.state.expenseArray}
-        handleDelete={this.handleDelete}
-      />
 
     </>
     )
